@@ -29,14 +29,12 @@ class TestDatabase:
         buns = database.available_buns()
         
         assert len(buns) == 3
+        # ИСПРАВЛЕНИЕ: заменили "in" на точное сравнение
         bun_names = [bun.get_name() for bun in buns]
-        assert "black bun" in bun_names
-        assert "white bun" in bun_names
-        assert "red bun" in bun_names
+        assert bun_names == ["black bun", "white bun", "red bun"]
     
     def test_available_ingredients(self, database):
         """Только получение ингредиентов"""
         ingredients = database.available_ingredients()
         
         assert len(ingredients) == 6
-        

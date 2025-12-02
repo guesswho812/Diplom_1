@@ -1,12 +1,20 @@
-import pytest
+﻿import pytest
+import sys
+import os
+
+# Добавляем путь к корню проекта
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 
 class TestBun:
     """Тесты для класса Bun"""
     
-    def test_bun_initialization(self, bun):
-        """Только инициализация"""
+    def test_bun_name_initialization(self, bun):
+        """Только инициализация имени"""
         assert bun.name == "Краторная булочка"
+    
+    def test_bun_price_initialization(self, bun):
+        """Только инициализация цены"""
         assert bun.price == 100.0
     
     def test_bun_get_name(self, bun):

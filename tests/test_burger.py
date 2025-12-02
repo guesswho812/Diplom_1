@@ -76,7 +76,7 @@ class TestBurger:
         assert burger.get_price() == 250  # 2*100 + 50
     
     def test_get_receipt(self, burger, mock_bun):
-        """ТЕСТ 7: Только формирование чека"""
+        """ТЕСТ 7: Формирование чека"""
         burger.set_buns(mock_bun)
         mock_ingredient = Mock()
         mock_ingredient.get_type.return_value = INGREDIENT_TYPE_SAUCE
@@ -85,6 +85,10 @@ class TestBurger:
         burger.ingredients = [mock_ingredient]
         
         receipt = burger.get_receipt()
-        assert "test bun" in receipt
-        assert "test sauce" in receipt
-        assert "Price: 250" in receipt  # 2*100 + 50
+        # ИСПРАВЛЕНИЕ: заменили "in" на полное сравнение строки
+        expected_receipt = """(==== test bun ====)
+= sauce test sauce =
+(==== test bun ====)
+
+Price: 250"""
+        assert receipt == expected_receipt

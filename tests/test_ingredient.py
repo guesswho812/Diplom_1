@@ -17,16 +17,28 @@ def ingredient():
 class TestIngredient:
     """Тесты для класса Ingredient"""
     
-    def test_ingredient_initialization(self, ingredient):
-        """Только инициализация"""
+    def test_ingredient_type_initialization(self, ingredient):
+        """Только инициализация типа"""
         assert ingredient.type == INGREDIENT_TYPE_SAUCE
+    
+    def test_ingredient_name_initialization(self, ingredient):
+        """Только инициализация названия"""
         assert ingredient.name == "hot sauce"
+    
+    def test_ingredient_price_initialization(self, ingredient):
+        """Только инициализация цены"""
         assert ingredient.price == 100.0
     
-    def test_ingredient_getters(self, ingredient):
-        """Только геттеры"""
+    def test_ingredient_get_type(self, ingredient):
+        """Только получение типа"""
         assert ingredient.get_type() == INGREDIENT_TYPE_SAUCE
+    
+    def test_ingredient_get_name(self, ingredient):
+        """Только получение названия"""
         assert ingredient.get_name() == "hot sauce"
+    
+    def test_ingredient_get_price(self, ingredient):
+        """Только получение цены"""
         assert ingredient.get_price() == 100.0
     
     @pytest.mark.parametrize("ingredient_type,name,price", [
